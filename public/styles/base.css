@@ -1,0 +1,10 @@
+@import url('../icon.css');
+@import url('../layout.css');
+@import url('../modules.css');
+@import url('../reset.css');
+
+
+body {
+    background: rgb(39, 39, 148);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
