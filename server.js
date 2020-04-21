@@ -23,6 +23,8 @@ app.get('/', (request, response) =>{
     response.render('./pages/index.ejs')
 });
 
+app.get
+
 app.listen(PORT, () => {
 console.log('server is running on PORT' + PORT)
 });
