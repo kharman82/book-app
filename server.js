@@ -17,7 +17,7 @@ app.get('/hello', (request, response) =>{
     response.send('hello from ejs')
 });
 
-app.get('/hello', (request, response) =>{
+app.get('/', (request, response) =>{
     response.send('./pages/index.ejs', )
 });
 
