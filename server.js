@@ -20,7 +20,7 @@ app.get('/hello', (request, response) => {
 });
 
 app.get('/', (request, response) =>{
-    response.send('./pages/index.ejs', )
+    response.render('./pages/index.ejs')
 });
 
 app.listen(PORT, () => {
