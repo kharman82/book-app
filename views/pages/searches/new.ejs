@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-        <form action='/serches' method='post'>
-            <input type="text" name'Search' placeholder="search by title">
+        <form action='/searches' method='post'>
+            <input type='text' name='search' placeholder="search by title" required>
             <label for='aName'>Search by Author</label>
-            <input type="text" name="Search">
-            <label for="Name">Search by Title</label>
-            <input for='radio' id='title' name='Search' value='title'>
+            <input type='radio' name="search" value='author'required>
+            <label for='aName'>Search by Title</label>
+            <input type='radio' id='title' name='search' value='title'required>
+            <button type='submit'>submit</button>
         </form>
     </form>
 </body>
