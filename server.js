@@ -77,7 +77,7 @@ app.get('/', (request, response) =>{
                 console.log('RENDER FORM DB');
                 response.render('pages/searches/new');
             }else {
-                response.send('/pages/index', {books : results.rowCount});
+                response.render('/pages/index', {books : results.rowCount});
             }
         })
         .catch(error => {
