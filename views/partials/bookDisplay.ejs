@@ -1,3 +1,8 @@
 <% books.forEach(book => { %>
-<p><%= book.title %></p>
+    <article>
+        <img src=<%book.image_url%>>
+        <p><%= book.title %></p><br>
+        <p><%= book.author %></p><br>
+        <a href="/pages/details"></a><br>
+</article>
 <% }) %>
