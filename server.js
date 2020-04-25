@@ -30,21 +30,16 @@ app.set('view engine', 'ejs');
 
 //Constructor
 function Book(data){
-    this.imageUrl = parseImageUrl(data.imageLinks.smallThumbnail);
-    this.title = data.title;
-    this.author = data.author;
-    this.description = data.description;
-    this.isbn = `${data.industryIdentifiers[0].type} ${data.industryIdentifiers[0].identifier}`;
-    this.bookshelf = data.bookshelf;
+    const placeHolderImage ='https://i.imgur.com?J5LVHEL.jpg';
+    let httpRegex = /^(http:\/\/)/g;
+    this.title = data.title ? data.title : 'no title here';
+    this.author = data.author ? data.author : 'no author here';
+    this.description = data.description ? data.description : 'no description here';
+    this.isbn = data.industryIdentifiers ? `ISBN_13 ${data.industryIdentifiers[0].indentifier}` : 'no isbn';
+    this.imageUrl = data.imageLinks ? data.imageLinks.smallThumbnail.replace(httpRegex, 'https://') : placeHolderImage;
+    this.bookshelf = data.bookshelf ? data.bookshelf : 'no bookshelf';
 }
 // cahnge http to https ?
-function parseImageUrl(imageUrl){
-    if(imageUrl !== ''){
-        return imageUrl.includes('http://')
-        ? imageUrl.replace(/^http:/, 'https:')
-        : imageUrl;
-    }
-}
 
 app.get('/hello', (request, response) => {
     response.send('hello from ejs')
@@ -114,7 +109,7 @@ app.post('/books', (request, response) => {
     dbClient.query(addBookSQL, addBookValues)
     .then(data => {
         console.log(data.rows);
-        response.send('adding book in progress');
+        // response.send('adding book in progress');
         response.render('pages/details', {book: data.rows[0]});
     })
     .catch(error => {

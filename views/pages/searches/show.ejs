@@ -7,13 +7,40 @@
 </head>
 <body>
     <h1>Hi how are you?</h1>
-    <% book.forEach(book => {%>
-    <img src= <%= book.image %>
-    <p><%= book.title %></p>
-    <p><%= book.author %></p>
-    <p><%= book.description %></p>
-    <p><%= book.ibsn %></p>
-    <p><%= book.bookshelf %></p>
+    <div class="book">
+        <% book.forEach(book => {%>
+        <img src= <%= book.image %>
+        <p><%= book.title %></p>
+        <p><%= book.author %></p>
+        <p><%= book.description %></p>
+        <p><%= book.isbn %></p>
+        <p><%= book.bookshelf %></p>
+        <form action="/books" method='POST'>
+            <fieldset>
+                <input type="hidden" name="search" placeholder="search by title or author" required>
+                <label for="title">
+                    <input type="hidden" name="title" value="<%= book.title%>">
+                </label>
+                <label for="author">
+                    <input type="hidden" name="author" value="<%= book.author%>">
+                </label>
+                <label for="description">
+                    <input type="hidden" name="description" value="<%= book.description%>">
+                </label>
+                <label for="isbn">
+                    <input type="hidden" name="isbn" value="<%= book.isbn%>">
+                </label>
+                <label for="bookshelf">
+                    <input type="hidden" name="bookshelf" value="<%= book.bookshelf%>">    
+                </label>
+                <label for="image_url">
+                    <input type="hidden" name="image_url" value="<%= book.image_url%>">    
+                </label>
+
+            </fieldset>
+            <button type="submit">Save Book</button>
+        </form>
+    </div>
 
     <% }) %> 
 </body>
